@@ -109,5 +109,7 @@ def search():
     for items in res3:
         print("\n")
         print(f"The position of {items[0]} is being offered by {items[1]}. The listing was put up {items[2]}. It is based in {items[3]} and is subclassified by: {items[4]}. Salary:{items[5]}")
+    
+    return res3
 
 search()
