@@ -3,11 +3,11 @@ import requests
 import json
 import pandas as pd
 
-what_input = str(input("Job Search Query: "))
-where_input = str(input("Job Location: "))
+#what_input = str(input("Job Search Query: "))
+#where_input = str(input("Job Location: "))
 
-def search(what_input, where_input):
-    url = f"https://www.seek.com.au/{what_input}-jobs/in-{where_input}"
+def search():
+    url = f"https://www.seek.com.au/internship-jobs/in-Australia"
     print(url)
     req = requests.get(url)
     data = req.text
@@ -63,7 +63,7 @@ def search(what_input, where_input):
             count += 1 
         else:
             print("called")
-            url = f'https://www.seek.com.au/{what_input}/{where_input}' + f'?page={count}'
+            url = f'https://www.seek.com.au/internship-jobs/in-Australia' + f'?page={count}'
             req = requests.get(url)
             data = req.text
             soup = BeautifulSoup(data, "html.parser")
@@ -110,4 +110,4 @@ def search(what_input, where_input):
         print("\n")
         print(f"The position of {items[0]} is being offered by {items[1]}. The listing was put up {items[2]}. It is based in {items[3]} and is subclassified by: {items[4]}. Salary:{items[5]}")
 
-search(what_input, where_input)
+search()
