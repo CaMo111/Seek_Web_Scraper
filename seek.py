@@ -6,6 +6,10 @@ import pandas as pd
 #what_input = str(input("Job Search Query: "))
 #where_input = str(input("Job Location: "))
 
+def save_jobs_to_excel(data, filename):
+    jobs = pd.DataFrame(data)
+    jobs.to_csv(filename)
+
 def search():
     url = f"https://www.seek.com.au/internship-jobs/in-Australia"
     print(url)
@@ -53,9 +57,6 @@ def search():
                 else:
                     res[data].append("NA")
 
-    def save_jobs_to_excel(data, filename):
-        jobs = pd.DataFrame(data)
-        jobs.to_csv(filename)
 
     for i in range(25):
         if count == 1:
@@ -106,10 +107,10 @@ def search():
         if "NA" not in items[:4]:
             res3.append(items)
 
-    for items in res3:
-        print("\n")
-        print(f"The position of {items[0]} is being offered by {items[1]}. The listing was put up {items[2]}. It is based in {items[3]} and is subclassified by: {items[4]}. Salary:{items[5]}")
-    
+    #for items in res3:
+        #print("\n")
+        #print(f"The position of {items[0]} is being offered by {items[1]}. The listing was put up {items[2]}. It is based in {items[3]} and is subclassified by: {items[4]}. Salary:{items[5]}")
     return res3
 
-search()
+data = search()
+save_jobs_to_excel(data, "Test")
